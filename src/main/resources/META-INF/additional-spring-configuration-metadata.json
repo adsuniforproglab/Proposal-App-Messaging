@@ -1,0 +1,29 @@
+{
+  "properties": [
+    {
+      "name": "cors.max-age",
+      "type": "java.lang.Long",
+      "description": "Maximum age (in seconds) of the CORS pre-flight response cache"
+    },
+    {
+      "name": "cors.allowed-origins",
+      "type": "java.lang.String",
+      "description": "Comma-separated list of origins allowed for CORS requests"
+    },
+    {
+      "name": "rabbitmq.queue.completed.proposal",
+      "type": "java.lang.String",
+      "description": "Queue name for completed proposals in RabbitMQ"
+    },
+    {
+      "name": "rabbitmq.completed-proposal.exchange",
+      "type": "java.lang.String",
+      "description": "Exchange name for completed proposals in RabbitMQ"
+    },
+    {
+      "name": "rabbitmq.pending-proposal.exchange",
+      "type": "java.lang.String",
+      "description": "Exchange name for pending proposals in RabbitMQ"
+    }
+  ]
+}
