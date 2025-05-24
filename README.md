@@ -1,36 +1,36 @@
-# Proposal App
+# Proposta App
 
-This is a microservices application for managing financial proposals with messaging support.
+Este é um aplicativo de microsserviços para gerenciar propostas financeiras com suporte a mensagens.
 
-## Table of Contents
+## Sumário
 
-- [Proposal App](#proposal-app)
-  - [Table of Contents](#table-of-contents)
-  - [Introduction](#introduction)
-  - [Features](#features)
-  - [Technologies](#technologies)
-  - [Architecture](#architecture)
-  - [Installation](#installation)
-  - [Usage](#usage)
-  - [API Documentation](#api-documentation)
-  - [Contributing](#contributing)
+- [Proposta App](#proposta-app)
+  - [Sumário](#sumário)
+  - [Introdução](#introdução)
+  - [Funcionalidades](#funcionalidades)
+  - [Tecnologias](#tecnologias)
+  - [Arquitetura](#arquitetura)
+  - [Instalação](#instalação)
+  - [Uso](#uso)
+  - [Documentação da API](#documentação-da-api)
+  - [Contribuindo](#contribuindo)
 
-## Introduction
+## Introdução
 
-The Proposal App is a robust microservices-based application for creating and managing financial proposals. It integrates with other services through RabbitMQ messaging and provides real-time updates via WebSockets.
+O Proposta App é um aplicativo robusto baseado em microsserviços para criar e gerenciar propostas financeiras. Ele se integra com outros serviços através de mensagens RabbitMQ e fornece atualizações em tempo real via WebSockets.
 
-## Features
+## Funcionalidades
 
-- Create and manage financial proposals
-- Credit analysis integration with priority queue system
-- Real-time notifications via WebSockets
-- RESTful API with detailed documentation
-- Robust error handling and validation
-- Automatic retry mechanism for failed message delivery
+- Crie e gerencie propostas financeiras
+- Integração de análise de crédito com sistema de fila de prioridade
+- Notificações em tempo real via WebSockets
+- API RESTful com documentação detalhada
+- Tratamento de erros robusto e validação
+- Mecanismo de nova tentativa automática para entrega de mensagens falhas
 
-## Technologies
+## Tecnologias
 
-The following technologies are used in this project:
+As seguintes tecnologias são utilizadas neste projeto:
 
 - Java 21
 - Spring Boot 3.4
@@ -38,46 +38,46 @@ The following technologies are used in this project:
 - Spring WebSocket
 - Spring Data JPA
 - PostgreSQL
-- Docker and Docker Compose
-- Swagger/OpenAPI for API documentation
+- Docker e Docker Compose
+- Swagger/OpenAPI para documentação da API
 
-## Architecture
+## Arquitetura
 
-The application follows a microservices architecture:
+O aplicativo segue uma arquitetura de microsserviços:
 
-1. **Proposal App** (this service) - Manages proposals and acts as the entry point for users
-2. **Credit Analysis App** - Processes proposals and approves/denies based on financial criteria  
-3. **Notification App** - Sends notifications to users about proposal status changes
+1. **Proposta App** (este serviço) - Gerencia propostas e atua como ponto de entrada para usuários
+2. **Análise de Crédito App** - Processa propostas e aprova/nega com base em critérios financeiros
+3. **Notificação App** - Envia notificações aos usuários sobre mudanças no status da proposta
 
-Communication between services is managed via RabbitMQ message exchanges and queues, with WebSockets providing real-time updates to clients.
+A comunicação entre os serviços é gerenciada via trocas de mensagens e filas RabbitMQ, com WebSockets fornecendo atualizações em tempo real para os clientes.
 
-## Installation
+## Instalação
 
-To run the Proposal App locally, follow these steps:
+Para executar o Proposta App localmente, siga estes passos:
 
-1. Clone the repository:
+1. Clone o repositório:
 
     ```shell
-    git clone https://github.com/leonardomeirels55/proposal-app.git
+    git clone [https://github.com/leonardomeirels55/proposal-app.git](https://github.com/leonardomeirels55/proposal-app.git)
     ```
 
-2. Configure the application properties:
+2. Configure as propriedades da aplicação:
 
-    Open the `application.properties` file located in `src/main/resources` and update the database connection details and RabbitMQ configuration according to your environment or env in `docker-compose`.
+    Abra o arquivo `application.properties` localizado em `src/main/resources` e atualize os detalhes de conexão do banco de dados e a configuração do RabbitMQ de acordo com o seu ambiente ou variáveis de ambiente no `docker-compose`.
 
-3. Run the application:
+3. Execute a aplicação:
 
     ```shell
     docker compose up
     ```
 
-    This will start all required services (PostgreSQL, RabbitMQ, and the microservices).
+    Isso iniciará todos os serviços necessários (PostgreSQL, RabbitMQ e os microsserviços).
 
-## Usage
+## Uso
 
-Once the application is running, you can access the API endpoints using a tool like Postman or cURL. Here are some example requests:
+Uma vez que a aplicação esteja em execução, você pode acessar os endpoints da API usando uma ferramenta como Postman ou cURL. Aqui estão alguns exemplos de requisições:
 
-- Create a new proposal:
+- Criar uma nova proposta:
     ```http
     POST /api/v1/proposals
     Content-Type: application/json
@@ -94,24 +94,23 @@ Once the application is running, you can access the API endpoints using a tool l
     }
     ```
 
-- Get all proposals:
+- Obter todas as propostas:
     ```http
     GET /api/v1/proposals
     ```
 
-- Get a specific proposal:
+- Obter uma proposta específica:
     ```http
     GET /api/v1/proposals/{id}
     ```
 
-## API Documentation
+## Documentação da API
 
-The API documentation is available via Swagger UI at:
+A documentação da API está disponível via Swagger UI em:
 
-```
 http://localhost:8080/api/v1/swagger-ui.html
-```
 
-## Contributing
 
-Contributions are welcome! If you have any ideas, suggestions, or bug reports, please open an issue or submit a pull request.
+## Contribuindo
+
+Contribuições são bem-vindas! Se você tiver alguma ideia, sugestão ou relatório de bug, por favor, abra uma issue ou envie um pull request.
