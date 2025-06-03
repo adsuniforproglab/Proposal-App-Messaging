@@ -34,46 +34,46 @@ import lombok.RequiredArgsConstructor;
 @Tag(name = "Proposals", description = "APIs for managing financial proposals")
 @Validated
 public class ProposalController {
-    private final ProposalService proposalService;
+        private final ProposalService proposalService;
 
-    @Operation(summary = "Create a new proposal", description = "Creates a new proposal with user information")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "201", description = "Proposal created successfully",
-                    content = @Content(schema = @Schema(implementation = ProposalResponse.class))),
-            @ApiResponse(responseCode = "400", description = "Invalid request data"),
-            @ApiResponse(responseCode = "500", description = "Internal server error")
-    })
-    @PostMapping
-    public ResponseEntity<ProposalResponse> createProposal(@Valid @RequestBody ProposalRequest proposalRequest,
-            UriComponentsBuilder uriBuilder) {
-        var proposal = proposalService.createProposal(proposalRequest);
-        var responseDTO = new ProposalResponse(proposal);
-        var uri = uriBuilder.path("/v1/proposals/{id}").buildAndExpand(proposal.getId()).toUri();
-        return ResponseEntity.created(uri).body(responseDTO);
-    }
+        @Operation(summary = "Create a new proposal", description = "Creates a new proposal with user information")
+        @ApiResponses(value = {
+                        @ApiResponse(responseCode = "201", description = "Proposal created successfully",
+                                        content = @Content(schema = @Schema(implementation = ProposalResponse.class))),
+                        @ApiResponse(responseCode = "400", description = "Invalid request data"),
+                        @ApiResponse(responseCode = "500", description = "Internal server error")
+        })
+        @PostMapping
+        public ResponseEntity<ProposalResponse> createProposal(@Valid @RequestBody ProposalRequest proposalRequest,
+                        UriComponentsBuilder uriBuilder) {
+                var proposal = proposalService.createProposal(proposalRequest);
+                var responseDTO = new ProposalResponse(proposal);
+                var uri = uriBuilder.path("/v1/proposals/{id}").buildAndExpand(proposal.getId()).toUri();
+                return ResponseEntity.created(uri).body(responseDTO);
+        }
 
-    @Operation(summary = "Get all proposals", description = "Returns all proposals in the system")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "List of proposals retrieved successfully"),
-            @ApiResponse(responseCode = "500", description = "Internal server error")
-    })
-    @GetMapping
-    public ResponseEntity<List<ProposalResponse>> getAllProposals() {
-        var proposals = proposalService.getProposals();
-        return ResponseEntity.ok(proposals);
-    }
+        @Operation(summary = "Get all proposals", description = "Returns all proposals in the system")
+        @ApiResponses(value = {
+                        @ApiResponse(responseCode = "200", description = "List of proposals retrieved successfully"),
+                        @ApiResponse(responseCode = "500", description = "Internal server error")
+        })
+        @GetMapping
+        public ResponseEntity<List<ProposalResponse>> getAllProposals() {
+                var proposals = proposalService.getProposals();
+                return ResponseEntity.ok(proposals);
+        }
 
-    @Operation(summary = "Get a specific proposal", description = "Returns a proposal by its ID")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Proposal retrieved successfully",
-                    content = @Content(schema = @Schema(implementation = ProposalResponse.class))),
-            @ApiResponse(responseCode = "404", description = "Proposal not found"),
-            @ApiResponse(responseCode = "500", description = "Internal server error")
-    })
-    @GetMapping("/{id}")
-    public ResponseEntity<ProposalResponse> getProposalById(@PathVariable Long id) {
-        return proposalService.getProposalById(id)
-                .map(proposal -> ResponseEntity.ok(new ProposalResponse(proposal)))
-                .orElse(ResponseEntity.notFound().build());
-    }
+        @Operation(summary = "Get a specific proposal", description = "Returns a proposal by its ID")
+        @ApiResponses(value = {
+                        @ApiResponse(responseCode = "200", description = "Proposal retrieved successfully",
+                                        content = @Content(schema = @Schema(implementation = ProposalResponse.class))),
+                        @ApiResponse(responseCode = "404", description = "Proposal not found"),
+                        @ApiResponse(responseCode = "500", description = "Internal server error")
+        })
+        @GetMapping("/{id}")
+        public ResponseEntity<ProposalResponse> getProposalById(@PathVariable Long id) {
+                return proposalService.getProposalById(id)
+                                .map(proposal -> ResponseEntity.ok(new ProposalResponse(proposal)))
+                                .orElse(ResponseEntity.notFound().build());
+        }
 }

@@ -16,7 +16,7 @@ public record ProposalResponse(
 
         @Schema(description = "User's last name (uppercase)", example = "DOE") String lastName,
 
-        @Schema(description = "User's telephone number", example = "(11) 98765-4321") String telephone,
+        @Schema(description = "User's telephone number", example = "(11) 98765-4321") String phoneNumber,
 
         @Schema(description = "User's CPF (Brazilian tax ID)", example = "123.456.789-00") String cpf,
 
@@ -39,7 +39,7 @@ public record ProposalResponse(
         this(
                 proposal.getUser().getName().toUpperCase(),
                 proposal.getUser().getLastName().toUpperCase(),
-                proposal.getUser().getTelephone(),
+                proposal.getUser().getPhoneNumber(),
                 proposal.getUser().getCpf(),
                 proposal.getUser().getFinancialIncome(),
                 NumberFormat.getCurrencyInstance().format(proposal.getProposalValue()),

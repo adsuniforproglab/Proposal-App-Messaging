@@ -21,8 +21,8 @@ public record ProposalRequest(
                                 message = "CPF must be in a valid format") String cpf,
 
                 @NotBlank(message = "Telephone is required") @Pattern(
-                                regexp = "^\\(?\\d{2}\\)?[\\s\\-]?\\d{4,5}[\\-]?\\d{4}$",
-                                message = "Telephone must be in a valid format") String telephone,
+                                regexp = "^55\\d{2}\\d{8,9}$",
+                                message = "Telephone must be in international format (e.g., 5585989924491)") String phoneNumber,
 
                 @NotNull(message = "Financial income is required") @Positive(
                                 message = "Financial income must be positive") Double financialIncome,
@@ -60,7 +60,7 @@ public record ProposalRequest(
                                 .name(this.name())
                                 .lastName(this.lastName())
                                 .cpf(this.cpf())
-                                .telephone(this.telephone())
+                                .phoneNumber(this.phoneNumber())
                                 .financialIncome(this.financialIncome())
                                 .build();
         }

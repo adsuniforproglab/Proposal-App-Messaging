@@ -35,7 +35,7 @@ public class User {
 
     private String cpf;
 
-    private String telephone;
+    private String phoneNumber;
 
     private Double financialIncome;
 
